@@ -84,6 +84,7 @@ public class BrokenInversionTest {
         }
 
         assertNotNull(email.getMessage());
+        // reason:There is no implicit call of message.setEmail(email)
         assertNull(message.getEmail());
     }
 
