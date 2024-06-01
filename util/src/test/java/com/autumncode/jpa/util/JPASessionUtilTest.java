@@ -14,12 +14,14 @@ import static org.testng.Assert.*;
 public class JPASessionUtilTest {
 @Test
 public void getEntityManager() {
+    // persistence unit is defined in META-INF/persistence.xml:5
     EntityManager em = JPASessionUtil.getEntityManager("utiljpa");
     em.close();
 }
 
 @Test(expectedExceptions = {javax.persistence.PersistenceException.class})
 public void nonexistentEntityManagerName() {
+    // there is no target persistence unit in META-INF/persistence.xml
     JPASessionUtil.getEntityManager("nonexistent");
     fail("We shouldn't be able to acquire an EntityManager here");
 }
